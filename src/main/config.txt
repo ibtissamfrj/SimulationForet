@@ -1,0 +1,10 @@
+//Dimensions hauteur & largeur:
+4 4
+//Numéro des points de feux
+3
+//PointsDeFeu:
+0 0
+1 1
+1 2
+//ProbabilitePropagation:
+5.0
