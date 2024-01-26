@@ -72,17 +72,24 @@ public class ForetGUI extends JFrame {
         contentPane.add(stepLabel, BorderLayout.NORTH);
     }
     private void nextStep() {
-        if (currentStep < grilles.size() - 1) {
+    	if (currentStep < grilles.size() - 1) {
             currentStep++; // Incrémenter le numéro de l'étape
-            
+
             // Récupérer la grille correspondant à l'étape actuelle depuis la liste grilles
             int[][] grille = grilles.get(currentStep);
-            
+
             // Mettre à jour le panneau de grille pour refléter la grille récupérée
             updateGridPanel(grille);
-            
+
             // Mettre à jour le label d'étape avec le numéro de l'étape actuelle
             stepLabel.setText("Step: " + currentStep);
+
+            // Mettre en pause l'exécution du thread principal pendant un certain temps (par exemple, 500 millisecondes)
+            try {
+                Thread.sleep(500); // Mettre en pause pendant 500 millisecondes entre chaque étape
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } else {
             nextStepButton.setEnabled(false); // Désactiver le bouton "Next Step" une fois que toutes les étapes ont été affichées
         }
