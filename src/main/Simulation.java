@@ -1,5 +1,6 @@
 package main;
 
+
 public class Simulation {
 	
 	//Méthode statique pour simuler la propagation du feu dans la forêt
@@ -21,7 +22,6 @@ public class Simulation {
 	                if (grille[i][j] == 0) {
 	                    grille[i][j] = -1;
 	                    zerosRemaining = true; // Des zéros restent dans la matrice
-	                    //break;
 	                }  
 	            }
       		}
@@ -41,7 +41,6 @@ public class Simulation {
 	                            
 	                        }
 	                    }
-	                    //break;
 	                }
 	            }
 	        }
@@ -49,17 +48,12 @@ public class Simulation {
       	    if (!zerosRemaining) {
       	        break;
       	    }
-      	    // Réinitialiser l'indicateur zerosRemaining pour la prochaine itération
-      	    //zerosRemaining = false;
-      		
-      	    //t++;
+      	    
 	        System.out.println("Etape " + (++t) + " :");
       	// Afficher la grille
-    		Foret.AffichageGrille(grille);
-    	    /*
-    		if(!zerosRemaining) {
-    			break;
-    		}*/
+    		foret.AffichageGrille(grille);
+    		foret.addGrille(grille);
+    	    
       	}
            
       

@@ -7,9 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Foret {
-    private int[][] grille; // Grille de simulation
-
-	// Constructeur pour initialiser la foret avec les paramètres du fichier
+    private final int[][] grille; // Grille de simulation
+    private final List<int[] []> grilles = new ArrayList<>();
+	
+    // Constructeur pour initialiser la foret avec les paramètres du fichier
 	public Foret(String fichier) {
 		Configuration config = new Configuration(fichier);
 		int h = config.getHauteur();
@@ -24,7 +25,7 @@ public class Foret {
 		}
 		//Affichage de la matrice avant le feu
 		System.out.println("Etat initial avant le feu: ");
-			Foret.AffichageGrille(grille);
+		AffichageGrille(grille);
 			
 		//Remplacer les points de feu par 0
 		for(int[] position : config.getPositionfeu()) {
@@ -33,7 +34,8 @@ public class Foret {
 		
 		//Affichage de la matrice avant le feu
 		System.out.println("Matrice avec les zeros: ");
-		Foret.AffichageGrille(grille);
+		
+		AffichageGrille(grille);
 		//Simulation de propagation de feu
 		Simulation.simulation(this, config);
 		
@@ -52,6 +54,17 @@ public class Foret {
 		}
 	}
 	
+	public List<int[][]> getGrilles() {
+		return grilles;
+	}
+	
+	public void addGrille(int [][] grille) {
+		int[][] copy = new int[grille.length][];
+		for(int i = 0; i< grille.length; i++) {
+			copy[i] = Arrays.copyOf(grille[i], grille[i].length);
+		}
+		grilles.add(copy);
+	}
 	//Méthode principale
 	public static void main(String[] args) {
 		//Création de l'objet Configuration pour lire les paramètres du fichier
